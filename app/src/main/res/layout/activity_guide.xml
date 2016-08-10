@@ -17,6 +17,7 @@
         android:text="开始体验"
         android:textColor="@drawable/btn_text_selector"
         android:id="@+id/btn_start"
+        android:visibility="invisible"
         android:background="@drawable/btn_selector"
         android:layout_marginBottom="60dp"
         android:layout_alignParentBottom="true"

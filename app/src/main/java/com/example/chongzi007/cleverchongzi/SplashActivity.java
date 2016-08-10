@@ -9,6 +9,8 @@ import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.widget.RelativeLayout;
 
+import Utils.prfUtils;
+
 public class SplashActivity extends Activity {
     private RelativeLayout rlroot;
 
@@ -41,8 +43,9 @@ public class SplashActivity extends Activity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                startActivity(new Intent(SplashActivity.this, GuideActivity.class));
-                finish();
+
+                showNexPage();
+
             }
 
             @Override
@@ -53,6 +56,18 @@ public class SplashActivity extends Activity {
         rlroot.startAnimation(animationSet);
 
 
+    }
+
+    private void showNexPage() {
+        boolean is_guide_user = prfUtils.getBoolean(SplashActivity.this, "is_guide_user", false);
+        if(is_guide_user){
+
+            startActivity(new Intent(SplashActivity.this,MainActivity.class));
+        }else{
+            startActivity(new Intent(SplashActivity.this, GuideActivity.class));
+        }
+
+        finish();
     }
 
 
