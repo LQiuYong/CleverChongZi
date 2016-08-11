@@ -1,6 +1,7 @@
 package com.example.chongzi007.cleverchongzi;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Window;
@@ -34,5 +35,27 @@ public class MainActivity extends SlidingFragmentActivity {
         transaction.replace(R.id.fl_content,new contentFragment(),"COTENT_FRAGMENT");
         transaction.commit();
 
+    }
+
+    /**
+     * 获取菜单栏对象
+     * @return
+     */
+    public menuFragment getLefSlidingtMenu(){
+
+        FragmentManager fm = getSupportFragmentManager();
+        menuFragment menu_ftagment = (menuFragment) fm.findFragmentByTag("MENU_FTAGMENT");
+        return  menu_ftagment;
+    }
+
+    /**
+     * 获取内容栏对象
+     * @return
+     */
+    public contentFragment getContentMenu(){
+
+        FragmentManager fm = getSupportFragmentManager();
+        contentFragment fragment = (contentFragment) fm.findFragmentByTag("COTENT_FRAGMENT");
+        return  fragment;
     }
 }
