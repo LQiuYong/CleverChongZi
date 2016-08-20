@@ -8,8 +8,8 @@ android {
         applicationId "com.example.chongzi007.cleverchongzi"
         minSdkVersion 12
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "2.0"
     }
     buildTypes {
         release {
@@ -28,4 +28,5 @@ dependencies {
     compile files('libs/xUtils-2.6.14.jar')
     compile files('libs/gson-2.3.1.jar')
     compile files('libs/org.apache.http.legacy.jar')
+    compile project(':viewPagerIndicator')
 }

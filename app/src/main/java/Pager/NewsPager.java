@@ -26,6 +26,8 @@ import domain.NewsData;
  */
 public class NewsPager extends BasePager {
 
+    private NewsData newsData;
+
     public NewsPager(Activity activity) {
         super(activity);
     }
@@ -36,12 +38,7 @@ public class NewsPager extends BasePager {
     public void initData() {
 
         tv_title.setText("新闻中心");
-        TextView textView = new TextView(mActivity);
-        textView.setText("新闻中心");
-        textView.setTextSize(22);
-        textView.setTextColor(Color.RED);
-        textView.setGravity(Gravity.CENTER);
-        fl_content.addView(textView);
+
         setSlidingMenuEnable(true);
         try {
             getDataFromService();
@@ -83,17 +80,19 @@ public class NewsPager extends BasePager {
     }
 
     //解析数据并处理数据
-    private void pasre(String data) {
+    private void pasre(String data) throws IOException {
         Gson gson = new Gson();
-        NewsData newsData = gson.fromJson(data, NewsData.class);
+        newsData = gson.fromJson(data, NewsData.class);
         MainActivity mainActivity = (MainActivity) mActivity;
         menuFragment lefSlidingtMenu = mainActivity.getLefSlidingtMenu();
         lefSlidingtMenu.setData(newsData);
-        menuPager=new ArrayList<>();
-        menuPager.add(new menuNewsPager(mActivity));
+        menuPager = new ArrayList<>();
+        menuPager.add(new menuNewsPager(mActivity,newsData.data.get(0).children));
         menuPager.add(new menuTitlePager(mActivity));
         menuPager.add(new menuPhotoPager(mActivity));
         menuPager.add(new menuPlayPager(mActivity));
+
+        setCurrentMenuPager(0);
 
 
     }
@@ -101,11 +100,13 @@ public class NewsPager extends BasePager {
     /**
      * 设置当前页面
      */
-    public void setCurrentMenuPager(int position) {
+    public void setCurrentMenuPager(int position) throws IOException {
 
         baseMenuPager pager = menuPager.get(position);
         fl_content.removeAllViews();
         fl_content.addView(pager.mrootView);
+        tv_title.setText(newsData.data.get(position).title);
+        pager.initData();
     }
 
 

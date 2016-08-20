@@ -36,6 +36,12 @@ public class BasePager {
         tv_title = (TextView) mrootView.findViewById(R.id.tv_title);
         fl_content = (FrameLayout) mrootView.findViewById(R.id.fl_content);
         ig_button = (ImageButton) mrootView.findViewById(R.id.ig_button);
+        ig_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setMenuOff();
+            }
+        });
     }
 
     /**
@@ -60,5 +66,14 @@ public class BasePager {
             slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
 
         }
+    }
+
+    /**
+     * 关闭侧滑菜单
+     */
+    public void setMenuOff() {
+        MainActivity main= (MainActivity) mActivity;
+        SlidingMenu menu = main.getSlidingMenu();
+        menu.toggle();
     }
 }

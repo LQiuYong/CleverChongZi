@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Views.TopnewsViewPager
+        android:id="@+id/vp_tab"
+        android:layout_width="match_parent"
+        android:layout_height="180dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#a000"
+        android:padding="10dp">
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+
+
+            />
+
+        <com.viewpagerindicator.CirclePageIndicator
+            android:id="@+id/vg_cirle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="10dp"
+            app:fillColor="#f00"
+            app:pageColor="#666"
+            app:radius="3dp"
+            app:strokeWidth="0dp"
+
+            >
+
+        </com.viewpagerindicator.CirclePageIndicator>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

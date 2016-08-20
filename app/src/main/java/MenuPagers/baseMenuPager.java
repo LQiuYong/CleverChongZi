@@ -3,6 +3,8 @@ package MenuPagers;
 import android.app.Activity;
 import android.view.View;
 
+import java.io.IOException;
+
 /**
  * 侧滑栏基类布局
  */
@@ -27,7 +29,7 @@ public abstract class baseMenuPager {
      * 初始化数据
      */
 
-    public void initData() {
+    public void initData() throws IOException {
 
     }
 

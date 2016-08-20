@@ -11,7 +11,9 @@ import android.widget.TextView;
 
 import com.example.chongzi007.cleverchongzi.MainActivity;
 import com.example.chongzi007.cleverchongzi.R;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import Pager.NewsPager;
@@ -34,7 +36,7 @@ public class menuFragment extends BaseFragment {
 
     }
 
-    private void setCurrentMenuItem(int position) {
+    private void setCurrentMenuItem(int position) throws IOException {
         //我们通过获取newspager对象去调用他的方法去设置
         //首先获取mactivity对象
         MainActivity mainActivity= (MainActivity) mactivity;
@@ -50,15 +52,30 @@ public class menuFragment extends BaseFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 currentPostion=position;
                 Adapter.notifyDataSetChanged();
-
-
                 //跳转页面
-                setCurrentMenuItem(position);
+                try {
+                    setCurrentMenuItem(position);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                setMenuOff();
             }
+
+
         });
 
 
     }
+
+    /**
+     * 关闭侧滑菜单
+     */
+    public void setMenuOff() {
+        MainActivity main= (MainActivity) mactivity;
+        SlidingMenu menu = main.getSlidingMenu();
+        menu.toggle();
+    }
+
 
 
 
